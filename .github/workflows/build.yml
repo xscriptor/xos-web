@@ -37,6 +37,7 @@ jobs:
 
       - name: Build x-dev package (PKGBUILD)
         run: |
+          pacman -Sy --noconfirm zsh wget
           cd packages/x-dev
           useradd -m builder
           chown -R builder:builder .
