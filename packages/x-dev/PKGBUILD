@@ -9,7 +9,7 @@ license=('MIT')
 depends=('zsh' 'git' 'base-devel' 'curl' 'wget')
 install=x-dev.install
 source=()
-md5sums=('SKIP')
+md5sums=()
 
 package() {
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/x" <<'EOF'
