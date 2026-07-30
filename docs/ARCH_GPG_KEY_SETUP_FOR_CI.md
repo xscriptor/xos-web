@@ -145,7 +145,7 @@ gpg --list-secret-keys --with-colons | awk -F: '/^fpr:/ {print $10; exit}'
 <pre><code>sudo pacman-key --init
 sudo pacman-key --populate archlinux
 
-curl -fsSL https://xscriptor.github.io/x-repo/repo/x86_64/signing.pub -o /tmp/x-repo-signing.pub
+curl -fsSL https://x-systems-org.github.io/x-repo/repo/x86_64/signing.pub -o /tmp/x-repo-signing.pub
 sudo pacman-key --add /tmp/x-repo-signing.pub
 sudo pacman-key --lsign-key 5AFC2CB4062E2CF43DF676CD13D45D50FFE244EE
 
