@@ -28,12 +28,21 @@ jobs:
       - name: Install toolchain and xpkg
         run: |
           pacman -Sy --noconfirm --needed rust cargo git openssl pkgconf
-          cargo install --git https://github.com/xscriptor/xpkg --locked xpkg
+          cargo install --git https://github.com/x-systems-org/xpkg --locked xpkg
 
       - name: Build x-release package (XBUILD)
         run: |
           cd packages/x-release
           ~/.cargo/bin/xpkg build -o /tmp/xpkg-out
+
+      - name: Build x-dev package (PKGBUILD)
+        run: |
+          cd packages/x-dev
+          useradd -m builder
+          chown -R builder:builder .
+          su builder -c "makepkg -c --noconfirm"
+          mkdir -p /tmp/x-dev-out
+          find . -name '*.pkg.tar.zst' -exec cp {} /tmp/x-dev-out/ \;
 
       - name: Include xpm package artifact
         run: |
@@ -74,8 +83,15 @@ jobs:
             esac
           done
 
+          # Include x-dev in pacman endpoint
+          for pkg in /tmp/x-dev-out/*.pkg.tar.zst; do
+            [ -e "$pkg" ] || continue
+            cp "$pkg" "public/repo/x86_64/"
+            pacman_pkg_count=$((pacman_pkg_count + 1))
+          done
+
           [ "$pacman_pkg_count" -gt 0 ] || {
-            echo "No x-release/xpm packages selected for pacman endpoint"
+            echo "No x-release/xpm/x-dev packages selected for pacman endpoint"
             exit 1
           }
 

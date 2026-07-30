@@ -17,7 +17,7 @@
 
 <h2 align="center" id="get-help"> Get Help </h2>
 <ul>
-  <li><b>Open an issue:</b> <a href="https://github.com/xscriptor/x-repo/issues">github.com/xscriptor/x-repo/issues</a></li>
+  <li><b>Open an issue:</b> <a href="https://github.com/x-systems-org/x-repo/issues">github.com/x-systems-org/x-repo/issues</a></li>
   <li><b>Documentation:</b> <a href="https://dev.xscriptor.com/x/docs">dev.xscriptor.com/x/docs</a></li>
   <li><b>Security reports:</b> <a href="mailto:x@xscriptor.com">x@xscriptor.com</a> (private disclosure only)</li>
 </ul>

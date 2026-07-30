@@ -33,7 +33,7 @@
 
 <pre><code>[x]
 SigLevel = Required DatabaseOptional
-Server = https://xscriptor.github.io/x-repo/repo/x86_64
+Server = https://x-systems-org.github.io/x-repo/repo/x86_64
 </code></pre>
 
 <p>Do not use <code>TrustAll</code> for production configuration.</p>
@@ -49,11 +49,11 @@ Server = https://xscriptor.github.io/x-repo/repo/x86_64
 <pre><code>sudo install -d -m 755 /etc/xpm/gnupg
 
 sudo curl -fsSL \
-  https://xscriptor.github.io/x-repo/x/x86_64/trustedkeys.gpg \
+  https://x-systems-org.github.io/x-repo/x/x86_64/trustedkeys.gpg \
   -o /etc/xpm/gnupg/trustedkeys.gpg
 
 sudo curl -fsSL \
-  https://xscriptor.github.io/x-repo/x/x86_64/signing.pub \
+  https://x-systems-org.github.io/x-repo/x/x86_64/signing.pub \
   -o /etc/xpm/gnupg/signing.pub
 </code></pre>
 
@@ -69,7 +69,7 @@ parallel_downloads = 5
 
 [[repo]]
 name = "x"
-server = ["https://xscriptor.github.io/x-repo/x/$arch"]
+server = ["https://x-systems-org.github.io/x-repo/x/$arch"]
 sig_level = "required"
 </code></pre>
 
@@ -99,7 +99,7 @@ sudo pacman-key --populate archlinux
 
 <h2>5) Import X Repository Public Key (pacman path)</h2>
 
-<pre><code>curl -fsSL https://xscriptor.github.io/x-repo/repo/x86_64/signing.pub -o /tmp/x-repo-signing.pub
+<pre><code>curl -fsSL https://x-systems-org.github.io/x-repo/repo/x86_64/signing.pub -o /tmp/x-repo-signing.pub
 sudo pacman-key --add /tmp/x-repo-signing.pub
 sudo pacman-key --lsign-key 5AFC2CB4062E2CF43DF676CD13D45D50FFE244EE
 </code></pre>
@@ -143,7 +143,7 @@ sudo pacman -Syy
   <li><b>Unknown key prompt in pacman:</b> Re-run steps 5 and 6.</li>
   <li><b>Remote key fetch failed:</b> Expected for private project keys. Import from <code>signing.pub</code> endpoint instead of keyservers.</li>
   <li><b>Signature error after key rotation:</b> Refresh key from the latest <code>signing.pub</code> and re-run local sign step.</li>
-  <li><b>xpm cannot find package:</b> Ensure <code>/etc/xpm.conf</code> points to <code>https://xscriptor.github.io/x-repo/x/$arch</code> and not <code>/repo/x86_64</code>.</li>
+  <li><b>xpm cannot find package:</b> Ensure <code>/etc/xpm.conf</code> points to <code>https://x-systems-org.github.io/x-repo/x/$arch</code> and not <code>/repo/x86_64</code>.</li>
   <li><b>xpm signature required but download failed:</b> Verify that <code>.sig</code> files exist in <code>x/x86_64</code> for package and database artifacts.</li>
   <li><b>xpm keyring load error:</b> Verify <code>gpg_dir</code> and presence of <code>trustedkeys.gpg</code> in <code>/etc/xpm/gnupg/</code>.</li>
   <li><b>xpm unknown signing key:</b> Refresh <code>/etc/xpm/gnupg/trustedkeys.gpg</code> from the endpoint and run <code>sudo xpm sync</code> again.</li>

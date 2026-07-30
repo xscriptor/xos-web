@@ -264,7 +264,7 @@ This repository contains system scripts for X. The primary entrypoint is \`x.sh\
 Run \`bash x.sh\` after system startup or reboot.
 
 \`\`\`bash
-curl -sLO https://raw.githubusercontent.com/xscriptor/x/main/x.sh || exit 0; chmod +x x.sh || true; ./x.sh || true
+curl -sLO https://raw.githubusercontent.com/x-systems-org/x/main/x.sh || exit 0; chmod +x x.sh || true; ./x.sh || true
 \`\`\`
 
 After execution, reload your shell: \`source ~/.bashrc\` or \`source ~/.zshrc\`.
@@ -458,7 +458,7 @@ Este repositorio contiene scripts de sistema para X. El punto de entrada princip
 Ejecute \`bash x.sh\` después del inicio del sistema o reinicio.
 
 \`\`\`bash
-curl -sLO https://raw.githubusercontent.com/xscriptor/x/main/x.sh || exit 0; chmod +x x.sh || true; ./x.sh || true
+curl -sLO https://raw.githubusercontent.com/x-systems-org/x/main/x.sh || exit 0; chmod +x x.sh || true; ./x.sh || true
 \`\`\`
 
 Después de la ejecución, recargue su shell: \`source ~/.bashrc\` o \`source ~/.zshrc\`.
