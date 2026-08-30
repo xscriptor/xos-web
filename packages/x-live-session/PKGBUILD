@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-live-session
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X Linux live graphical session (openbox + pcmanfm + installer icon)"
 arch=('any')
 url="https://xscriptor.io/x"
@@ -16,8 +16,11 @@ package() {
     install -Dm755 "$startdir/files/usr/bin/x-live-session" "$pkgdir/usr/bin/x-live-session"
     install -Dm755 "$startdir/files/usr/bin/x-installer" "$pkgdir/usr/bin/x-installer"
     install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$pkgdir/usr/share/applications/x-installer.desktop"
-    install -Dm644 "$startdir/files/etc/xdg/openbox/autostart" "$pkgdir/etc/xdg/openbox/autostart"
-    install -Dm644 "$startdir/files/etc/xdg/openbox/rc.xml" "$pkgdir/etc/xdg/openbox/rc.xml"
+
+    # openbox config lives outside /etc/xdg to avoid conflict with the openbox package;
+    # x-live-session copies it into ~/.config/openbox at runtime.
+    install -Dm644 "$startdir/files/usr/share/x-live-session/openbox/autostart" "$pkgdir/usr/share/x-live-session/openbox/autostart"
+    install -Dm644 "$startdir/files/usr/share/x-live-session/openbox/rc.xml" "$pkgdir/usr/share/x-live-session/openbox/rc.xml"
 
     # Desktop icon (Instalar X) placed on the live desktop via pcmanfm profile
     install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$pkgdir/etc/skel/Desktop/x-installer.desktop"
