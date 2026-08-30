@@ -27,9 +27,17 @@ echo "────────────────────────�
 # udev settle so Xorg finds the devices.
 command -v udevadm >/dev/null 2>&1 && udevadm settle || true
 
-# Ensure the wallpaper/logo package is present.
+# Ensure the branding package is present.
 if ! pacman -Qq x-release >/dev/null 2>&1; then
     echo "[x] x-release no está instalado en el live."
+fi
+
+# Install the X openbox config into the root user's config dir.
+# (openbox reads ~/.config/openbox before /etc/xdg/openbox)
+if [ -d /usr/share/x-live-session/openbox ]; then
+    mkdir -p /root/.config/openbox
+    cp -f /usr/share/x-live-session/openbox/autostart /root/.config/openbox/autostart
+    cp -f /usr/share/x-live-session/openbox/rc.xml /root/.config/openbox/rc.xml
 fi
 
 # DBus session bus.
