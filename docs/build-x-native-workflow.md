@@ -1,3 +1,26 @@
+# Native Package Manager Workflow (Pending)
+
+This document preserves the former `build-x-native.yml` workflow. It is kept for
+future reference and is **not** used right now.
+
+## Status
+
+- **Pending**: to be re-enabled when the native package manager (`xpm`/`xpkg`)
+  is ready for production.
+- Packages for the `[x]` pacman repository are currently built locally and
+  committed to `public/repo/x86_64/`. See `build-packages.sh`.
+- The website deploy workflow (`build.yml`) publishes the committed files to
+  GitHub Pages without rebuilding packages.
+
+## Original Workflow
+
+Name: Build X Native Repo & Deploy Web
+
+Triggers on `workflow_dispatch`. It builds native `.xp` packages from source
+(`xpm`, `xpkg`, `xfetch`, `xclock`), publishes them to `public/x/x86_64/`,
+and deploys the website to GitHub Pages.
+
+```yaml
 name: Build X Native Repo & Deploy Web
 
 on:
@@ -11,7 +34,6 @@ permissions:
 concurrency:
   group: "pages-x-native"
   cancel-in-progress: false
-
 
 jobs:
   build-x-native:
@@ -114,3 +136,10 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+```
+
+## Notes
+
+- Both the native workflow and the website workflow deploy to GitHub Pages.
+- Do not re-enable this workflow while the website deploy workflow is active,
+  or they may overwrite each other's Pages deployment.
