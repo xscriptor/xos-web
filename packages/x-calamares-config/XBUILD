@@ -1,0 +1,26 @@
+[package]
+name = "x-calamares-config"
+version = "1.0"
+release = 1
+description = "Calamares installer configuration and branding for X Linux"
+url = "https://xscriptor.io/x"
+license = ["GPL-3.0-or-later"]
+arch = ["any"]
+
+[dependencies]
+depends = ["calamares"]
+
+[source]
+urls = []
+
+[build]
+package = """
+install -Dm644 "$startdir/files/settings.conf" "$PKGDIR/etc/calamares/settings.conf"
+
+for conf in "$startdir"/files/modules/*.conf; do
+  install -Dm644 "$conf" "$PKGDIR/etc/calamares/modules/$(basename "$conf")"
+done
+
+install -d "$PKGDIR/usr/share/calamares/branding/x"
+cp -a "$startdir/files/branding/x/." "$PKGDIR/usr/share/calamares/branding/x/"
+"""
