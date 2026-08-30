@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-live-session
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="X Linux live graphical session (openbox + pcmanfm + installer icon)"
 arch=('any')
 url="https://xscriptor.io/x"
@@ -22,5 +22,5 @@ package() {
 
     # pcmanfm desktop profile + desktop icon (copied to /root at live startup)
     install -Dm644 "$startdir/files/usr/share/x-live-session/pcmanfm/x-live/pcmanfm.conf" "$pkgdir/usr/share/x-live-session/pcmanfm/x-live/pcmanfm.conf"
-    install -Dm644 "$startdir/files/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop" "$pkgdir/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop"
+    install -Dm755 "$startdir/files/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop" "$pkgdir/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop"
 }
