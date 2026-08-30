@@ -1,0 +1,44 @@
+[package]
+name = "x-live-session"
+version = "1.0"
+release = 1
+description = "X Linux live graphical session (openbox + pcmanfm + installer icon)"
+url = "https://xscriptor.io/x"
+license = ["GPL-3.0-or-later"]
+arch = ["any"]
+
+[dependencies]
+depends = ["x-release", "xorg-server", "xorg-xinit", "xorg-xrandr",
+           "openbox", "pcmanfm", "mesa", "xf86-video-vesa", "feh",
+           "dbus", "zenity"]
+
+[source]
+urls = []
+
+[build]
+package = """
+install -Dm755 "$startdir/files/usr/bin/x-live-session" "$PKGDIR/usr/bin/x-live-session"
+install -Dm755 "$startdir/files/usr/bin/x-installer" "$PKGDIR/usr/bin/x-installer"
+install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$PKGDIR/usr/share/applications/x-installer.desktop"
+install -Dm644 "$startdir/files/etc/xdg/openbox/autostart" "$PKGDIR/etc/xdg/openbox/autostart"
+install -Dm644 "$startdir/files/etc/xdg/openbox/rc.xml" "$PKGDIR/etc/xdg/openbox/rc.xml"
+
+# Desktop icon (Instalar X) placed on the live desktop via pcmanfm profile
+install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$PKGDIR/etc/skel/Desktop/x-installer.desktop"
+
+# pcmanfm live desktop profile
+install -d "$PKGDIR/etc/skel/.config/pcmanfm/x-live"
+install -Dm644 /dev/stdin "$PKGDIR/etc/skel/.config/pcmanfm/x-live/pcmanfm.conf" <<'EOF'
+[desktop]
+wallpaper_mode=stretch
+wallpaper=/usr/share/backgrounds/x/x-wallpaper.png
+desktop_font=Noto Sans 10
+show_documents=0
+show_trash=0
+show_mounts=0
+single_click=0
+
+[panel]
+icons=4
+EOF
+"""

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+  <resistance>
+    <strength>10</strength>
+    <corner_strength>10</corner_strength>
+  </resistance>
+  <focus>
+    <focusNew>yes</focusNew>
+    <followMouse>no</followMouse>
+  </focus>
+  <placement>
+    <policy>Smart</policy>
+    <center>yes</center>
+    <monitor>Primary</monitor>
+  </placement>
+  <theme>
+    <name>Arc</name>
+    <cornerRadius>0</cornerRadius>
+  </theme>
+  <desktops>
+    <number>1</number>
+    <names>
+      <name>X</name>
+    </names>
+  </desktops>
+  <applications>
+    <application class="Calamares">
+      <fullscreen>no</fullscreen>
+      <maximized>yes</maximized>
+    </application>
+  </applications>
+</openbox_config>

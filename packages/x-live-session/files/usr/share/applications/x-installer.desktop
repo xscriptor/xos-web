@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Instalar X
+Name[en]=Install X
+Comment=Instala X Linux en este equipo
+Comment[en]=Install X Linux on this computer
+Exec=x-installer
+Icon=x-logo
+Terminal=false
+StartupNotify=true
+Categories=System;Installer;

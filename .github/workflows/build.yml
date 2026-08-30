@@ -1,4 +1,4 @@
-name: Build Repo & Deploy Web
+name: Deploy Website to GitHub Pages
 
 on:
   workflow_dispatch:
@@ -13,145 +13,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # 1. Build package repositories
-  build-repo:
-    runs-on: ubuntu-latest
-    container: archlinux:base-devel
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Install toolchain and xpkg
-        run: |
-          pacman -Sy --noconfirm --needed rust cargo git openssl pkgconf
-          cargo install --git https://github.com/xlnux/xpkg --locked xpkg
-
-      - name: Build x-release package (XBUILD)
-        run: |
-          cd packages/x-release
-          ~/.cargo/bin/xpkg build -o /tmp/xpkg-out
-
-      - name: Build x-dev package (PKGBUILD)
-        run: |
-          pacman -Sy --noconfirm zsh wget
-          cd packages/x-dev
-          useradd -m builder
-          chown -R builder:builder .
-          su builder -c "makepkg -c --noconfirm"
-          mkdir -p /tmp/x-dev-out
-          find . -name '*.pkg.tar.zst' -exec cp {} /tmp/x-dev-out/ \;
-
-      - name: Include xpm package artifact
-        run: |
-          set -euo pipefail
-
-          latest_xpm="$(ls -1 packages/xpm/*.xp | sort -V | tail -n1)"
-          [ -n "$latest_xpm" ] || { echo "No xpm .xp artifact found in packages/xpm"; exit 1; }
-
-          cp "$latest_xpm" /tmp/xpkg-out/
-
-      - name: Create repositories (pacman and xpm)
-        run: |
-          set -euo pipefail
-
-          mkdir -p public/repo/x86_64 public/x/x86_64
-
-          rm -f public/repo/x86_64/* public/x/x86_64/*
-
-          pacman_pkg_count=0
-
-          # Copy .xp packages to xpm endpoint
-          for pkg in /tmp/xpkg-out/*.xp; do
-            [ -e "$pkg" ] || { echo "No .xp packages produced"; exit 1; }
-            base="$(basename "$pkg" .xp)"
-            cp "$pkg" "public/x/x86_64/$base.xp"
-          done
-
-          # Copy only long-term stable pacman-facing packages
-          for pkg in /tmp/xpkg-out/*.xp; do
-            base="$(basename "$pkg" .xp)"
-            case "$base" in
-              x-release-*|xpm-*)
-                cp "$pkg" "public/repo/x86_64/$base.pkg.tar.zst"
-                pacman_pkg_count=$((pacman_pkg_count + 1))
-                ;;
-              *)
-                ;;
-            esac
-          done
-
-          # Include x-dev in pacman endpoint
-          for pkg in /tmp/x-dev-out/*.pkg.tar.zst; do
-            [ -e "$pkg" ] || continue
-            cp "$pkg" "public/repo/x86_64/"
-            pacman_pkg_count=$((pacman_pkg_count + 1))
-          done
-
-          [ "$pacman_pkg_count" -gt 0 ] || {
-            echo "No x-release/xpm/x-dev packages selected for pacman endpoint"
-            exit 1
-          }
-
-          # Build xpm repository database
-          (
-            cd public/x/x86_64
-            rm -f x.db* x.files* || true
-            repo-add -n -R x.db.tar.gz *.xp
-            rm -f x.db x.files
-            cp x.db.tar.gz x.db
-            cp x.files.tar.gz x.files
-          )
-
-          # Build pacman repository database
-          (
-            cd public/repo/x86_64
-            rm -f x.db* x.files* || true
-            repo-add -n -R x.db.tar.gz *.pkg.tar.zst
-            rm -f x.db x.files
-            cp x.db.tar.gz x.db
-            cp x.files.tar.gz x.files
-          )
-
-          # Generate checksums for both endpoints
-          for endpoint in public/x/x86_64 public/repo/x86_64; do
-            (
-              cd "$endpoint"
-              sha256sum * > SHA256SUMS
-            )
-          done
-
-      - name: Upload Repo Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: repo-files
-          path: public
-
-  # 2. Build and deploy website
+  # Packages are built locally (see docs/build-packages.md) and committed
+  # under public/repo and public/x. This job only builds the website and
+  # deploys everything to GitHub Pages.
   deploy-web:
-    needs: build-repo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Download Repo Files
-        uses: actions/download-artifact@v4
-        with:
-          name: repo-files
-          path: public
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          
+
       - name: Install & Build Next.js
         run: |
           npm ci
           npm run build
-          
+
+      - name: Verify repository files exist
+        run: |
+          test -f public/repo/x86_64/x.db && echo "pacman repo db present"
+          test -f public/repo/x86_64/calamares-*.pkg.tar.zst && echo "calamares package present"
+          test -f public/repo/x86_64/x-release-*.pkg.tar.zst && echo "x-release package present"
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:

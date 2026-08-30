@@ -1,0 +1,17 @@
+# X Linux — openbox autostart (live session)
+# Start the desktop with the installer icon and a background.
+
+# Desktop wallpaper
+if command -v feh >/dev/null 2>&1 && [ -f /usr/share/backgrounds/x/x-wallpaper.png ]; then
+    feh --bg-fill /usr/share/backgrounds/x/x-wallpaper.png &
+fi
+
+# Desktop icons via pcmanfm
+if command -v pcmanfm >/dev/null 2>&1; then
+    pcmanfm --desktop --profile=x-live &
+fi
+
+# Notifications/compositing (light)
+if command -v picom >/dev/null 2>&1; then
+    picom --daemon 2>/dev/null &
+fi

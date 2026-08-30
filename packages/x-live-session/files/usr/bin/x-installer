@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# X Linux — launch the Calamares installer from the live session.
+if ! command -v calamares >/dev/null 2>&1; then
+    zenity --error --title="X Linux" --text="Calamares no está instalado en el live." 2>/dev/null \
+        || echo "[x] calamares not found in live environment."
+    exit 1
+fi
+
+# Use a DBus session so Calamares can talk to polkit/etc.
+if [ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]; then
+    eval "$(dbus-launch --sh-syntax)" 2>/dev/null || true
+fi
+
+# Installer runs as root (live autologin is root); Calamares supports this.
+exec calamares --debug

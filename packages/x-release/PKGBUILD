@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-release
 pkgver=1.0
-pkgrel=3
+pkgrel=6
 pkgdesc="X Linux identity and branding files"
 arch=('any')
 url="https://xscriptor.io/x"
@@ -41,4 +41,35 @@ GRUB_DISABLE_RECOVERY=true
 EOF
 
     install -Dm644 "distributor-logo.svg" "$pkgdir/usr/share/pixmaps/x.svg"
+    install -Dm644 "$startdir/files/x-wallpaper.png" "$pkgdir/usr/share/backgrounds/x/x-wallpaper.png"
+    install -Dm644 "$startdir/files/x-logo.png" "$pkgdir/usr/share/pixmaps/x-logo.png"
+    install -Dm755 "$startdir/files/x-release-apply" "$pkgdir/usr/bin/x-release-apply"
+
+    # Pacman hooks: re-apply branding after filesystem/grub upgrades
+    install -d "$pkgdir/etc/pacman.d/hooks"
+    install -Dm644 /dev/stdin "$pkgdir/etc/pacman.d/hooks/99-x-os-release.hook" <<'EOF'
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = filesystem
+
+[Action]
+Description = Applying X Linux identity to os-release...
+When = PostTransaction
+Exec = /bin/sh -c "install -Dm644 /usr/share/x-release/os-release /usr/lib/os-release"
+EOF
+
+    install -Dm644 /dev/stdin "$pkgdir/etc/pacman.d/hooks/99-x-grub.hook" <<'EOF'
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = grub
+
+[Action]
+Description = Applying X branding to GRUB...
+When = PostTransaction
+Exec = /bin/sh -c "install -Dm644 /usr/share/x-release/grub /etc/default/grub; grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1 || true"
+EOF
 }

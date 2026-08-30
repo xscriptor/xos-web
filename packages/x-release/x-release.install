@@ -1,34 +1,9 @@
 # Post-install/upgrade hooks for x-release
 
 post_install() {
-    echo "Applying X Linux identity..."
-
-    # 1. Reemplazamos os-release forzando la sobreescritura
-    # Esto soluciona el conflicto con el paquete 'filesystem'
-    if [ -f /usr/share/x-release/os-release ]; then
-        cp -f /usr/share/x-release/os-release /usr/lib/os-release
+    if command -v x-release-apply >/dev/null 2>&1; then
+        x-release-apply || true
     fi
-    
-    # 2. Reemplazamos la configuración de GRUB
-    # Esto soluciona el conflicto con el paquete 'grub'
-    if [ -f /usr/share/x-release/grub ] && [ -d /etc/default ]; then
-        cp -f /usr/share/x-release/grub /etc/default/grub
-    fi
-
-    # 3. Regeneramos GRUB para que los cambios se vean al arrancar
-    if command -v grub-mkconfig &>/dev/null && [ -d /boot/grub ]; then
-        echo "Regenerating GRUB configuration..."
-        grub-mkconfig -o /boot/grub/grub.cfg 2>/dev/null || true
-    fi
-    
-    # 4. Parche para systemd-boot (por si acaso se usa en lugar de GRUB)
-    for dir in /boot/loader/entries /efi/loader/entries; do
-        if [ -d "$dir" ]; then
-            for f in "$dir"/*.conf; do
-                [ -f "$f" ] && sed -i 's/Arch Linux/X/g' "$f" 2>/dev/null || true
-            done
-        fi
-    done
 }
 
 post_upgrade() {
@@ -36,8 +11,8 @@ post_upgrade() {
 }
 
 post_remove() {
-    # Regenerating GRUB configuration...
+    # Regenerate GRUB so boot entries drop the X branding cleanly
     if [ -f /boot/grub/grub.cfg ]; then
-        grub-mkconfig -o /boot/grub/grub.cfg
+        grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1 || true
     fi
 }
