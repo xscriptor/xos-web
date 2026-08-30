@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-live-session
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="X Linux live graphical session (openbox + pcmanfm + installer icon)"
 arch=('any')
 url="https://xscriptor.io/x"
@@ -15,29 +15,12 @@ sha256sums=()
 package() {
     install -Dm755 "$startdir/files/usr/bin/x-live-session" "$pkgdir/usr/bin/x-live-session"
     install -Dm755 "$startdir/files/usr/bin/x-installer" "$pkgdir/usr/bin/x-installer"
-    install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$pkgdir/usr/share/applications/x-installer.desktop"
 
-    # openbox config lives outside /etc/xdg to avoid conflict with the openbox package;
-    # x-live-session copies it into ~/.config/openbox at runtime.
+    # openbox config (copied to ~/.config/openbox at live startup)
     install -Dm644 "$startdir/files/usr/share/x-live-session/openbox/autostart" "$pkgdir/usr/share/x-live-session/openbox/autostart"
     install -Dm644 "$startdir/files/usr/share/x-live-session/openbox/rc.xml" "$pkgdir/usr/share/x-live-session/openbox/rc.xml"
 
-    # Desktop icon (Instalar X) placed on the live desktop via pcmanfm profile
-    install -Dm644 "$startdir/files/usr/share/applications/x-installer.desktop" "$pkgdir/etc/skel/Desktop/x-installer.desktop"
-
-    # pcmanfm live desktop profile
-    install -d "$pkgdir/etc/skel/.config/pcmanfm/x-live"
-    install -Dm644 /dev/stdin "$pkgdir/etc/skel/.config/pcmanfm/x-live/pcmanfm.conf" <<'EOF'
-[desktop]
-wallpaper_mode=stretch
-wallpaper=/usr/share/backgrounds/x/x-wallpaper.png
-desktop_font=Noto Sans 10
-show_documents=0
-show_trash=0
-show_mounts=0
-single_click=0
-
-[panel]
-icons=4
-EOF
+    # pcmanfm desktop profile + desktop icon (copied to /root at live startup)
+    install -Dm644 "$startdir/files/usr/share/x-live-session/pcmanfm/x-live/pcmanfm.conf" "$pkgdir/usr/share/x-live-session/pcmanfm/x-live/pcmanfm.conf"
+    install -Dm644 "$startdir/files/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop" "$pkgdir/usr/share/x-live-session/pcmanfm/x-live/x-installer.desktop"
 }
