@@ -18,7 +18,7 @@ export default function DownloadPage() {
       setDownloadStarted(true);
       // Simulate download trigger
       console.log("Download started: x-2026.01.30-x86_64.iso");
-      window.location.href = 'https://github.com/x-systems-org/x-linux/releases/download/x/x-2026.01.30-x86_64.iso';
+      window.location.href = 'https://github.com/xlnux/x-linux/releases/download/x/x-2026.01.30-x86_64.iso';
     }
   }, [timeLeft, downloadStarted]);
 
@@ -70,7 +70,7 @@ export default function DownloadPage() {
         <div className="pt-4 border-t border-X-gray/10 text-sm text-X-gray">
           <p>{t.download.manual}</p>
           <button
-            onClick={() => window.location.href = 'https://github.com/x-systems-org/x-linux/releases/download/x/x-2026.01.30-x86_64.iso'}
+            onClick={() => window.location.href = 'https://github.com/xlnux/x-linux/releases/download/x/x-2026.01.30-x86_64.iso'}
             className="text-X-cyan hover:text-X-pink underline font-medium mt-1 inline-flex items-center gap-1"
           >
             {t.download.button} <Download size={14} />
@@ -79,7 +79,7 @@ export default function DownloadPage() {
 
         <div className="pt-4 border-t border-X-gray/10 text-sm text-X-gray">
           <button
-            onClick={() => window.location.href = 'https://github.com/x-systems-org/x-linux/releases/download/x/x-2026.01.31.tar.zst'}
+            onClick={() => window.location.href = 'https://github.com/xlnux/x-linux/releases/download/x/x-2026.01.31.tar.zst'}
             className="text-X-gray hover:text-X-green underline font-medium mt-1 inline-flex items-center gap-1"
           >
             {t.download.wslButton} <Download size={14} />

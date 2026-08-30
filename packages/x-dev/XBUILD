@@ -3,7 +3,7 @@ name = "x-dev"
 version = "1.0"
 release = 1
 description = "X development environment — sudo wrapper, shell config, dev tooling"
-url = "https://dev.xscriptor.com/x"
+url = "https://xscriptor.io/x"
 license = ["MIT"]
 arch = ["any"]
 
@@ -111,8 +111,8 @@ if command -v code &>/dev/null; then
   code --install-extension xscriptor.xglass 2>/dev/null || warn "Failed xglass"
 fi
 log "Installing X tools..."
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch failed"
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xtop/main/install.sh | bash 2>/dev/null || warn "xtop failed"
+curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch failed"
+curl -fsSL https://raw.githubusercontent.com/xscriptor/xtop/main/install.sh | bash 2>/dev/null || warn "xtop failed"
 log "Done! Reload your shell: source ~/.zshrc"
 XDEVENV
 

@@ -3,9 +3,9 @@
 <div align="center">
   <p><b>A minimalistic Linux Spin based on Arch</b></p>
   <p>
-    <a href="https://dev.xscriptor.com/x">Website</a> •
-    <a href="https://dev.xscriptor.com/x/docs">Documentation</a> •
-    <a href="https://dev.xscriptor.com/x/download">Download</a>
+    <a href="https://xscriptor.io/x">Website</a> •
+    <a href="https://xscriptor.io/x/docs">Documentation</a> •
+    <a href="https://xscriptor.io/x/download">Download</a>
   </p>
 </div>
 
@@ -13,8 +13,8 @@
     <img alt="License" src="https://img.shields.io/badge/license-GPL--3.0-blue.svg">
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white">
     <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white">
-    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/x-systems-org/x-repo/build.yml?branch=main&label=CI">
-    <img alt="Website" src="https://img.shields.io/badge/website-dev.xscriptor.com-8B5CF6">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/xlnux/x-repo/build.yml?branch=main&label=CI">
+    <img alt="Website" src="https://img.shields.io/badge/website-xscriptor.io-8B5CF6">
 </p>
 
 <hr />
@@ -135,6 +135,6 @@ sudo x-release-apply</code></pre>
 <div align="center">
 <h2 align="center" id="x">X</h2>
 
-<a href="https://github.com/x-systems-org">XGitHub</a> &middot;
-<a href="https://dev.xscriptor.com">XWeb</a>
+<a href="https://github.com/xlnux">XGitHub</a> &middot;
+<a href="https://xscriptor.io">XWeb</a>
 </div>

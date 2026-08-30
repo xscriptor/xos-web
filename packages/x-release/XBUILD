@@ -3,7 +3,7 @@ name = "x-release"
 version = "1.0"
 release = 4
 description = "X Linux identity and branding files"
-url = "https://dev.xscriptor.com/x"
+url = "https://xscriptor.io/x"
 license = ["MIT"]
 arch = ["any"]
 
@@ -22,10 +22,10 @@ ID=x
 ID_LIKE=arch
 BUILD_ID=rolling
 ANSI_COLOR="0;36"
-HOME_URL="https://dev.xscriptor.com/x"
-DOCUMENTATION_URL="https://dev.xscriptor.com/x/docs"
-SUPPORT_URL="https://dev.xscriptor.com/x/support"
-BUG_REPORT_URL="https://github.com/x-systems-org/x-linux"
+HOME_URL="https://xscriptor.io/x"
+DOCUMENTATION_URL="https://xscriptor.io/x/docs"
+SUPPORT_URL="https://xscriptor.io/x/support"
+BUG_REPORT_URL="https://github.com/xlnux/x-linux"
 LOGO=x
 EOF
 
