@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-live-session
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="X Linux live graphical session (openbox + pcmanfm + installer icon)"
 arch=('any')
 url="https://xscriptor.io/x"
