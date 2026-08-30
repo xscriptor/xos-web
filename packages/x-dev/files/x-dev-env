@@ -135,8 +135,8 @@ fi
 
 # ── 9. Install X ecosystem tools ──
 log "Installing X tools..."
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch install failed"
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xtop/main/install.sh | bash 2>/dev/null || warn "xtop install failed"
+curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch install failed"
+curl -fsSL https://raw.githubusercontent.com/xscriptor/xtop/main/install.sh | bash 2>/dev/null || warn "xtop install failed"
 
 log "Done!"
 log "Reload your shell: source ~/.zshrc"

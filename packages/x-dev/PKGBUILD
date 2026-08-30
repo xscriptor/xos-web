@@ -4,7 +4,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="X development environment — sudo wrapper, shell config, dev tooling"
 arch=('any')
-url="https://dev.xscriptor.com/x"
+url="https://xscriptor.io/x"
 license=('MIT')
 depends=('zsh' 'git' 'base-devel' 'curl' 'wget')
 install=x-dev.install
@@ -121,8 +121,8 @@ if command -v code &>/dev/null; then
 fi
 
 log "Installing X tools..."
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch failed"
-curl -fsSL https://raw.githubusercontent.com/x-systems-org/xtop/main/install.sh | bash 2>/dev/null || warn "xtop failed"
+curl -fsSL https://raw.githubusercontent.com/xfetch-cli/xfetch/main/install.sh | bash 2>/dev/null || warn "xfetch failed"
+curl -fsSL https://raw.githubusercontent.com/xscriptor/xtop/main/install.sh | bash 2>/dev/null || warn "xtop failed"
 
 log "Done! Reload your shell: source ~/.zshrc"
 XDEVENV
