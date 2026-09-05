@@ -1,7 +1,7 @@
 # Maintainer: Xscriptor <dev@xscriptor.com>
 pkgname=x-release
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="X Linux identity and branding files"
 arch=('any')
 url="https://xscriptor.io/x"
@@ -22,7 +22,7 @@ ANSI_COLOR="0;36"
 HOME_URL="https://xscriptor.io/x"
 DOCUMENTATION_URL="https://xscriptor.io/x/docs"
 SUPPORT_URL="https://xscriptor.io/x/support"
-BUG_REPORT_URL="https://github.com/xlnux/x-linux"
+BUG_REPORT_URL="https://github.com/xlnux/x"
 LOGO=x
 EOF
 
