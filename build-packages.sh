@@ -32,13 +32,6 @@ build_xbuild() {
 # --- pacman-facing packages (committed to public/repo) ---
 build_pkgbuild x-release
 build_pkgbuild x-dev
-build_pkgbuild x-calamares-config
-build_pkgbuild x-live-session
-
-# Calamares and kpmcore-git are built once from AUR and committed manually:
-#   git clone https://aur.archlinux.org/kpmcore-git.git
-#   git clone https://aur.archlinux.org/calamares.git
-#   makepkg -si (in each), then copy the *.pkg.tar.zst here.
 
 echo "== Copying packages to repo =="
 for pkg in packages/*/*.pkg.tar.zst; do

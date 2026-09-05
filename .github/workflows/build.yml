@@ -35,7 +35,6 @@ jobs:
       - name: Verify repository files exist
         run: |
           test -f public/repo/x86_64/x.db && echo "pacman repo db present"
-          test -f public/repo/x86_64/calamares-*.pkg.tar.zst && echo "calamares package present"
           test -f public/repo/x86_64/x-release-*.pkg.tar.zst && echo "x-release package present"
 
       - name: Upload Pages Artifact
