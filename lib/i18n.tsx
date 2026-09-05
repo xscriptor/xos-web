@@ -282,156 +282,157 @@ After execution, reload your shell: \`source ~/.bashrc\` or \`source ~/.zshrc\`.
   },
   es: {
     home: {
-      title: "X,\nminimalista,\npotente,\npara ti...",
-      subtitle: "La próxima evolución de Arch Linux. Minimalista. Potente. Tuyo.",
-      cta: "Comenzar",
+      title: "X,\nminimal,\npowerful,\nyours...",
+      subtitle: "The next evolution of Arch Linux. Minimal. Powerful. Yours.",
+      cta: "Get Started",
     },
     X: {
       title: "X Linux",
-      description: "Una distribución basada en Arch Linux personalizada, enfocada en la simplicidad, identidad X limpia y compilaciones reproducibles.",
+      description: "A custom Arch Linux–based distribution focused on simplicity, clean X branding, and reproducible builds. Built entirely from official Arch repositories.",
       features: {
-        minimal: "Minimalista y Pulido",
-        branding: "Identidad Única",
-        reproducible: "Compilaciones Reproducibles",
+        minimal: "Minimal & Polished",
+        branding: "Unique Identity",
+        reproducible: "Reproducible Builds",
       },
     },
     scripts: {
       title: "X Scripts",
-      description: "Scripts de sistema para la configuración de X. El punto de entrada `x.sh` gestiona la configuración del entorno, la shell y la gestión de paquetes.",
+      description: "System scripts for X configuration. The entrypoint `x.sh` handles environment setup, shell configuration, and distro-aware package management.",
       features: {
-        setup: "Configuración Automatizada",
-        modules: "Complementos Modulares",
+        setup: "Automated Setup",
+        modules: "Modular Add-ons",
       },
     },
     customizations: {
       vscode: {
         title: "VSCode X",
-        description: "Optimizado para X con extensiones X exclusivas. Flujo de trabajo y estética mejorados desde el inicio.",
+        description: "Optimized for X with exclusive X extensions. Enhanced workflow and aesthetics out of the box.",
       },
       helix: {
-        title: "Editor Helix",
-        description: "Preconfigurado con los ajustes personalizados de xscriptor. La experiencia definitiva de edición modal.",
+        title: "Helix Editor",
+        description: "Pre-configured with xscriptor's custom settings. The ultimate modal editing experience.",
       },
       ghostty: {
-        title: "Terminal Ghostty",
-        description: "Terminal de alto rendimiento acelerada por GPU. Con el tema y configuración propios de xscriptor.",
+        title: "Ghostty Terminal",
+        description: "High-performance GPU-accelerated terminal. Featuring xscriptor's custom theme and configuration.",
       },
       tools: {
         title: "X Power Tools",
-        description: "Rendimiento nativo en Rust con xfetch y xtop. Información y monitoreo del sistema ultrarrápidos.",
+        description: "Native Rust performance with xfetch and xtop. Blazing fast system information and monitoring.",
       },
     },
     nav: {
-      home: "Inicio",
-      download: "Descargar",
-      developers: "Desarrolladores",
-      contact: "Contacto",
+      home: "Home",
+      download: "Download",
+      developers: "Developers",
+      contact: "Contact",
     },
     download: {
-      title: "Descargando X",
-      message: "Su descarga empezará en algunos segundos...",
-      manual: "Si pasados cinco segundos no empieza,",
-      button: "de click aquí",
-      wslButton: "Descargar para WSL",
+      title: "Downloading X",
+      message: "Your download will start in a few seconds...",
+      manual: "If it doesn't start automatically after 5 seconds,",
+      button: "click here",
+      wslButton: "Download for WSL",
     },
     developers: {
-      title: "Únete a la Revolución",
-      description: "Estamos construyendo el futuro del código abierto. Conecta con nosotros para contribuir al kernel, shell UI o gestor de paquetes.",
+      title: "Join the Revolution",
+      description: "We are building the future of open source. Connect with us to contribute to the core kernel, UI shell, or package manager.",
       form: {
-        name: "Nombre Completo",
-        email: "Correo Electrónico",
-        skills: "Habilidades Principales (ej. Rust, C, React)",
-        github: "Perfil de GitHub",
-        submit: "Solicitar Unirse",
+        name: "Full Name",
+        email: "Email Address",
+        skills: "Primary Skills (e.g., Rust, C, React)",
+        github: "GitHub Profile",
+        submit: "Apply to Join",
       },
     },
     contact: {
-      title: "Contáctanos",
-      description: "¿Tienes preguntas o consultas empresariales? Escribe al equipo de X.",
+      title: "Get in Touch",
+      description: "Have questions or enterprise inquiries? Reach out to the X team.",
       form: {
-        name: "Nombre",
-        email: "Correo",
-        message: "Mensaje",
-        submit: "Enviar Mensaje",
+        name: "Name",
+        email: "Email",
+        message: "Message",
+        submit: "Send Message",
       },
     },
     docs: {
       content: `
-# Documentación
+# Documentation
 
 ## X Linux
 
 
-**X** es una distribución personalizada basada en Arch Linux, centrada en la simplicidad, una identidad de marca clara y compilaciones reproducibles.
+**X** is a custom Arch Linux-based distribution focused on simplicity, a clean brand identity, and reproducible builds.
 
-Este repositorio contiene el perfil completo de ArchISO junto con los recursos posteriores a la instalación necesarios para generar la imagen ISO oficial de X.
+This repository contains the complete ArchISO profile along with the post-installation resources used to generate the official X ISO image.
 
-> **Estado del proyecto:** En desarrollo activo
+> **Project status:** Actively under development
+
+---
+
+### General description
+
+X aims to provide a system based on Arch that is minimal yet refined, with its own identity and a consistent user experience.
+
+It is built entirely from the official Arch repositories, using the standard \`mkarchiso\` workflow combined with a custom profile configuration.
 
 
 ---
 
 
-### Descripción General
-
-X tiene como objetivo proporcionar un sistema basado en Arch mínimo pero pulido, con su propia identidad y marca.
-
-Está construido completamente a partir de los repositorios oficiales de Arch, utilizando el flujo de trabajo estándar de \`mkarchiso\` con una definición de perfil personalizada y scripts de post-instalación.
-
-
-### Estructura del Proyecto
+### Project Structure
 
 \`\`\`
 X/
-├── profiledef.sh             # Definición del perfil ArchISO
-├── pacman.conf               # Configuración personalizada de paquetes
-├── packages.x86_64           # Lista de paquetes para la compilación ISO
-├── airootfs/                 # Sistema de archivos raíz (superposición personalizada de ArchISO)
+├── profiledef.sh             # ArchISO profile definition
+├── pacman.conf               # Custom package configuration
+├── packages.x86_64           # Package list for ISO build
+├── airootfs/                 # Root filesystem (customized ArchISO overlay)
 ├── root/
-│   └── X-assets/           # Marca, fondos de pantalla, logotipos, scripts post-instalación
-├── build.sh                  # Script de compilación automatizado
+│   └── X-assets/           # Branding, wallpapers, logos, postinstall scripts
+├── build.sh                  # Automated build script
 └── .gitignore
 \`\`\`
 
 
-### Construcción de la ISO
+### Building the ISO
 
-Para construir la imagen ISO de X localmente, asegúrese de tener \`archiso\` instalado.
+To build the X ISO image locally, ensure you have \`archiso\` installed.
 
 \`\`\`bash
 sudo pacman -S archiso
 \`\`\`
 
-Luego ejecute el script de compilación incluido:
+Then run the included build script:
 
 \`\`\`bash
 ./xbuild.sh
 \`\`\`
 
-El script:
-1. Desmontará cualquier montaje obsoleto de compilaciones anteriores.
+The script will:
+1. Unmount any stale mounts from previous builds.
 
-2. Limpiará los directorios \`work/\` y \`out/\`.
+2. Clean the \`work/\` and \`out/\` directories.
 
-3. Ejecutará \`mkarchiso\` con la configuración proporcionada.
+3. Run \`mkarchiso\` with the provided configuration.
 
-4. Almacenará la imagen \`.iso\` resultante dentro de \`./out/\`.
+4. Store the resulting \`.iso\` image inside \`./out/\`.
 
 
-### Personalización Post-instalación
+### Post-installation Customization
 
-Después de instalar Arch a través de la ISO generada, ejecute el **script post-instalación de X** para aplicar la marca y configuración completa del sistema.
+After installing Arch via the generated ISO, execute the **X post-install script** to apply full system branding and configuration.
 
 \`\`\`bash
 sudo /root/X-assets/X-postinstall.sh
 \`\`\`
 
-Este script:
-* Reeiscribe \`/etc/os-release\` para identificar el sistema como X Linux.
+This script:
+* Rewrites \`/etc/os-release\` to identify the system as X Linux.
 
-* Instala fondos de pantalla, logotipos y la marca GDM/GNOME.
+* Installs wallpapers, logos, and GDM/GNOME branding.
 
-* Configura ganchos post-instalación y ajustes de entorno.
+* Sets up post-install hooks and environment adjustments.
 
 
 ---
@@ -439,38 +440,38 @@ Este script:
 
 ## X Scripts
 
-Este repositorio contiene scripts de sistema para X. El punto de entrada principal es \`x.sh\`, que configura y actualiza el entorno después de un reinicio. Un directorio \`scripts\` en progreso alojará complementos opcionales y configuraciones extra.
+This repository contains system scripts for X. The primary entrypoint is \`x.sh\`, which configures and refreshes the environment after a reboot. An in-progress \`scripts\` directory will host optional add-ons and extra configurations.
 
 
-### x.sh (Script Base)
+### x.sh (Base Script)
 
-- **Propósito**: Aplicar las últimas configuraciones requeridas para X después de un reinicio.
+- **Purpose**: Apply the latest required configurations for X after a reboot.
 
-- **Responsabilidades**:
-  - Asegurar que el comando envoltorio \`x\` esté instalado en \`/usr/bin/x\` para que \`x <cmd>\` se ejecute con privilegios elevados.
-  - Instalar y configurar Zsh y Oh My Zsh, incluyendo plugins útiles.
-  - Agregar alias de shell y ayudas de Git/navegación a los archivos rc del usuario y del sistema si faltan.
-  - Realizar la configuración de paquetes consciente de la distribución (ej. Arch \`pacman\`, Debian/Ubuntu \`apt\`, Fedora \`dnf\`).
+- **Responsibilities**:
+  - Ensure the \`x\` wrapper command is installed to \`/usr/bin/x\` so \`x <cmd>\` runs with elevated privileges.
+  - Install and configure Zsh and Oh My Zsh, including useful plugins.
+  - Add shell aliases and Git/navigation helpers to user and system rc files when missing.
+  - Perform distro-aware package setup (e.g., Arch \`pacman\`, Debian/Ubuntu \`apt\`, Fedora \`dnf\`).
 
 
-### Uso
+### Usage
 
-Ejecute \`bash x.sh\` después del inicio del sistema o reinicio.
+Run \`bash x.sh\` after system startup or reboot.
 
 \`\`\`bash
 curl -sLO https://raw.githubusercontent.com/xlnux/x/main/x.sh || exit 0; chmod +x x.sh || true; ./x.sh || true
 \`\`\`
 
-Después de la ejecución, recargue su shell: \`source ~/.bashrc\` o \`source ~/.zshrc\`.
+After execution, reload your shell: \`source ~/.bashrc\` or \`source ~/.zshrc\`.
 
 
-### /scripts (Complementos Opcionales)
+### /scripts (Optional Add-ons)
 
-- **Estado**: En desarrollo activo.
+- **Status**: Under active development.
 
-- **Ubicación**: \`/scripts\` (para ser poblado).
+- **Location**: \`/scripts\` (to be populated).
 
-- **Propósito**: Alojar configuraciones opcionales y modulares que se pueden agregar a X bajo demanda, sin ser parte de la configuración base.
+- **Purpose**: Host optional and modular configurations that can be added to X on demand, without being part of the base setup.
       `,
     },
   },
