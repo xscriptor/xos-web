@@ -65,7 +65,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <Link href="https://github.com/xlnux/x-linux" target="_blank" className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden border border-X-cyan/30 group hover:border-X-cyan/60 transition-colors">
+            <Link href="https://github.com/xlnux/x" target="_blank" className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden border border-X-cyan/30 group hover:border-X-cyan/60 transition-colors">
               <img
                 src="/x-repo/images/XHyprland.png"
                 alt="X Linux Repository"
