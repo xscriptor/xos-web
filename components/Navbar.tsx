@@ -165,7 +165,7 @@ export default function Navbar() {
         </DockItem>
 
         <DockItem
-          href="https://github.com/xlnux/x-linux"
+          href="https://github.com/xlnux/x"
           target="_blank"
           mouseX={mouseX}
         >
