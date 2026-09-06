@@ -138,3 +138,4 @@ sudo x-release-apply</code></pre>
 <a href="https://github.com/xlnux">XGitHub</a> &middot;
 <a href="https://xscriptor.io">XWeb</a>
 </div>
+- Documentation: https://github.com/xlnux/wiki

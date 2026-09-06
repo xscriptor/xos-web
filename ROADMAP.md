@@ -28,3 +28,5 @@
 - [ ] Add dependency update policy and security review cadence (#18)
 - [ ] Add release workflow with changelog validation gates (#19)
 
+
+Nota: ya no hay sincronizacion roadmap->issues (workflow eliminado).
